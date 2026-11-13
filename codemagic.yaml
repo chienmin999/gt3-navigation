@@ -9,13 +9,21 @@ workflows:
       xcode: latest
       cocoapods: default
     scripts:
-      - name: Set up project
+      - name: Generate and configure iOS project
         script: |
+          # 1. Sao lưu cấu hình riêng của app (Info.plist có Background Location, AppDelegate có WearEngine)
+          cp ios/Runner/Info.plist /tmp/Info.plist
+          cp ios/Runner/AppDelegate.swift /tmp/AppDelegate.swift
+
+          # 2. Tạo đầy đủ Xcode project scaffolding cho iOS
+          flutter create . --platforms=ios --org com.gt3nav
+
+          # 3. Phục hồi cấu hình quyền & bridge
+          cp /tmp/Info.plist ios/Runner/Info.plist
+          cp /tmp/AppDelegate.swift ios/Runner/AppDelegate.swift
+
+          # 4. Lấy Flutter dependencies
           flutter packages pub get
-      - name: Install CocoaPods
-        script: |
-          cd ios
-          pod install
       - name: Build iOS Release (No Codesign)
         script: |
           flutter build ios --release --no-codesign

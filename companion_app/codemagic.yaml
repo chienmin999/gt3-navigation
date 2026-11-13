@@ -3,37 +3,38 @@ workflows:
     name: Build Unsigned iOS IPA (For Sideloadly)
     max_build_duration: 30
     instance_type: mac_mini_m1
+    working_directory: companion_app
     environment:
       flutter: stable
       xcode: latest
       cocoapods: default
     scripts:
-      - name: Set up project
+      - name: Generate and configure iOS project
         script: |
-          cd companion_app
+          # 1. Sao lưu cấu hình riêng của app (Info.plist có Background Location, AppDelegate có WearEngine)
+          cp ios/Runner/Info.plist /tmp/Info.plist
+          cp ios/Runner/AppDelegate.swift /tmp/AppDelegate.swift
+
+          # 2. Tạo đầy đủ Xcode project scaffolding cho iOS
+          flutter create . --platforms=ios --org com.gt3nav
+
+          # 3. Phục hồi cấu hình quyền & bridge
+          cp /tmp/Info.plist ios/Runner/Info.plist
+          cp /tmp/AppDelegate.swift ios/Runner/AppDelegate.swift
+
+          # 4. Lấy Flutter dependencies
           flutter packages pub get
-      - name: Install CocoaPods
-        script: |
-          cd companion_app/ios
-          pod install
       - name: Build iOS Release (No Codesign)
         script: |
-          cd companion_app
           flutter build ios --release --no-codesign
       - name: Package Unsigned .ipa for Sideloadly
         script: |
-          cd companion_app/build/ios/iphoneos
+          cd build/ios/iphoneos
           mkdir -p Payload
           cp -r Runner.app Payload/
           zip -r GT3Nav_unsigned.ipa Payload
-          mv GT3Nav_unsigned.ipa ../../../
     artifacts:
-      - companion_app/GT3Nav_unsigned.ipa
+      - companion_app/build/ios/iphoneos/GT3Nav_unsigned.ipa
       - companion_app/build/ios/iphoneos/*.app
-    publishing:
-      email:
-        recipients:
-          - your_email@example.com
-        notify:
-          success: true
-          failure: true
+      - "*.ipa"
+      - "**/*.ipa"
