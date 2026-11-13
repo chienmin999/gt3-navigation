@@ -11,7 +11,7 @@ workflows:
     scripts:
       - name: Generate and configure iOS project
         script: |
-          # 1. Sao lưu cấu hình riêng của app (Info.plist có Background Location, AppDelegate có WearEngine)
+          # 1. Sao lưu cấu hình riêng của app
           cp ios/Runner/Info.plist /tmp/Info.plist
           cp ios/Runner/AppDelegate.swift /tmp/AppDelegate.swift
 
@@ -26,15 +26,48 @@ workflows:
           flutter packages pub get
       - name: Build iOS Release (No Codesign)
         script: |
-          flutter build ios --release --no-codesign
+          # Bơm DEVELOPMENT_TEAM và tắt code signing trong project.pbxproj để vượt qua kiểm tra của Flutter
+          python3 -c '
+          import re
+          with open("ios/Runner.xcodeproj/project.pbxproj", "r") as f:
+              text = f.read()
+          text = re.sub(
+              r"(PRODUCT_BUNDLE_IDENTIFIER = [^;]+;)",
+              r"\1\n\t\t\t\tDEVELOPMENT_TEAM = A1B2C3D4E5;\n\t\t\t\tCODE_SIGN_IDENTITY = \"\";\n\t\t\t\tCODE_SIGNING_REQUIRED = NO;\n\t\t\t\tCODE_SIGNING_ALLOWED = NO;",
+              text
+          )
+          with open("ios/Runner.xcodeproj/project.pbxproj", "w") as f:
+              f.write(text)
+          '
+
+          # Biên dịch release không cần code signing
+          flutter build ios --release --no-codesign || {
+            echo "Flutter CLI blocked on signing check. Falling back to direct xcodebuild..."
+            xcodebuild -workspace ios/Runner.xcworkspace \
+              -scheme Runner \
+              -configuration Release \
+              -sdk iphoneos \
+              -destination "generic/platform=iOS" \
+              CODE_SIGNING_ALLOWED=NO \
+              CODE_SIGNING_REQUIRED=NO \
+              CODE_SIGN_IDENTITY="" \
+              build
+          }
       - name: Package Unsigned .ipa for Sideloadly
         script: |
-          cd build/ios/iphoneos
+          APP_PATH=$(find . -name "Runner.app" -type d | grep -E "Release|iphoneos" | head -n 1)
+          if [ -z "$APP_PATH" ]; then
+            echo "ERROR: Runner.app not found!"
+            find . -name "*.app" -type d
+            exit 1
+          fi
+          echo "Found compiled app at: $APP_PATH"
           mkdir -p Payload
-          cp -r Runner.app Payload/
+          cp -r "$APP_PATH" Payload/
           zip -r GT3Nav_unsigned.ipa Payload
+          cp GT3Nav_unsigned.ipa ..
     artifacts:
-      - companion_app/build/ios/iphoneos/GT3Nav_unsigned.ipa
-      - companion_app/build/ios/iphoneos/*.app
+      - companion_app/GT3Nav_unsigned.ipa
+      - GT3Nav_unsigned.ipa
       - "*.ipa"
       - "**/*.ipa"
