@@ -58,6 +58,7 @@ workflows:
             exit 1
           fi
           echo "Found compiled app at: $APP_PATH"
+          rm -rf Payload GT3Nav_unsigned.ipa ../GT3Nav_unsigned.ipa
           mkdir -p Payload
           cp -r "$APP_PATH" Payload/
           zip -r GT3Nav_unsigned.ipa Payload

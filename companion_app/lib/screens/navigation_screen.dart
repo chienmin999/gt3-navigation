@@ -64,9 +64,15 @@ class _NavigationScreenState extends State<NavigationScreen> {
     final route = navService.routeInfo;
     final currentStep = navService.currentStep;
 
-    return WillPopScope(
-      onWillPop: () async {
-        return await _confirmExitNavigation(context) ?? false;
+    return PopScope(
+      canPop: false,
+      onPopInvoked: (didPop) async {
+        if (didPop) return;
+        final shouldExit = await _confirmExitNavigation(context);
+        if (shouldExit == true && context.mounted) {
+          navService.stopNavigation();
+          Navigator.pop(context);
+        }
       },
       child: Scaffold(
         body: Stack(

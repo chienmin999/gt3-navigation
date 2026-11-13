@@ -16,6 +16,15 @@ class LocationService extends ChangeNotifier {
   double? get latitude => _currentPosition?.latitude;
   double? get longitude => _currentPosition?.longitude;
 
+  /// Stream vị trí theo thời gian thực (cho NavigationScreen)
+  Stream<Position> get positionStream {
+    const locationSettings = LocationSettings(
+      accuracy: LocationAccuracy.high,
+      distanceFilter: 3, // Cập nhật mỗi 3 mét di chuyển
+    );
+    return Geolocator.getPositionStream(locationSettings: locationSettings);
+  }
+
   /// Lấy vị trí hiện tại một lần
   Future<Position?> getCurrentPosition() async {
     try {
