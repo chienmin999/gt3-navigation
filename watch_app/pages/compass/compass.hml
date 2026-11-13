@@ -1,0 +1,32 @@
+<!-- 
+  Trang La bàn / Compass Page
+  Hiển thị hướng la bàn đơn giản
+  Màn hình tròn 466x466px - GT 3 SE - Dark theme
+-->
+<div class="container">
+  
+  <!-- Tiêu đề -->
+  <text class="title">La bàn</text>
+
+  <!-- Vòng la bàn -->
+  <div class="compass-ring">
+    <!-- Các chữ hướng -->
+    <text class="direction direction-n">B</text>
+    <text class="direction direction-e">Đ</text>
+    <text class="direction direction-s">N</text>
+    <text class="direction direction-w">T</text>
+
+    <!-- Kim la bàn (hiển thị bằng text, xoay theo heading) -->
+    <div class="needle-container" style="transform: rotate({{ needleRotation }}deg);">
+      <text class="needle-north">▲</text>
+      <text class="needle-south">▼</text>
+    </div>
+
+    <!-- Góc heading hiển thị ở giữa -->
+    <text class="heading-text">{{ headingDegrees }}°</text>
+    <text class="heading-label">{{ headingDirection }}</text>
+  </div>
+
+  <!-- Ghi chú -->
+  <text class="note">{{ compassNote }}</text>
+</div>

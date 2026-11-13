@@ -1,0 +1,33 @@
+{
+  "strings": {
+    "appName": "Dẫn đường",
+    "waiting_title": "Đang chờ điện thoại",
+    "waiting_subtitle": "Mở ứng dụng dẫn đường trên điện thoại",
+    "waiting_connecting": "Đang kết nối...",
+    "disconnected_title": "Mất kết nối",
+    "disconnected_subtitle": "Kiểm tra kết nối điện thoại",
+    "nav_distance_label": "Còn",
+    "nav_eta_label": "Tới lúc",
+    "nav_remaining_label": "Còn lại",
+    "nav_street_default": "Đường không xác định",
+    "compass_title": "La bàn",
+    "compass_north": "B",
+    "compass_south": "N",
+    "compass_east": "Đ",
+    "compass_west": "T",
+    "maneuver_straight": "Đi thẳng",
+    "maneuver_turn_left": "Rẽ trái",
+    "maneuver_turn_right": "Rẽ phải",
+    "maneuver_slight_left": "Chếch trái",
+    "maneuver_slight_right": "Chếch phải",
+    "maneuver_sharp_left": "Rẽ gấp trái",
+    "maneuver_sharp_right": "Rẽ gấp phải",
+    "maneuver_u_turn": "Quay đầu",
+    "maneuver_roundabout": "Vòng xuyến",
+    "maneuver_arrive": "Đã tới nơi",
+    "maneuver_depart": "Xuất phát",
+    "km_unit": "km",
+    "connection_lost": "Mất kết nối",
+    "reconnecting": "Đang kết nối lại..."
+  }
+}

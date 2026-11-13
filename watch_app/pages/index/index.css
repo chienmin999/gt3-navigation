@@ -1,0 +1,158 @@
+/**
+ * Styles cho trang Navigation chính
+ * Dark theme, high contrast, màn hình tròn 466x466px
+ * Tối ưu cho đọc ngoài nắng
+ */
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 466px;
+  height: 466px;
+  background-color: #000000;
+  border-radius: 233px;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+/* === PHẦN TRÊN: Icon rẽ + khoảng cách === */
+.top-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 8px;
+}
+
+/* Icon mũi tên chỉ hướng - to, rõ */
+.maneuver-icon {
+  font-size: 72px;
+  color: #00FF88;
+  text-align: center;
+  margin-bottom: 4px;
+}
+
+/* Khoảng cách đến chỗ rẽ - nổi bật nhất */
+.distance-text {
+  font-size: 48px;
+  color: #FFFFFF;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* === ĐƯỜNG KẺ PHÂN CÁCH === */
+.divider {
+  width: 280px;
+  height: 2px;
+  background-color: #333333;
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
+/* === PHẦN GIỮA: Loại rẽ + Tên đường === */
+.middle-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+/* Nhãn loại maneuver (Rẽ trái, Rẽ phải...) */
+.maneuver-label {
+  font-size: 20px;
+  color: #00FF88;
+  text-align: center;
+  margin-bottom: 4px;
+}
+
+/* Tên đường */
+.street-name {
+  font-size: 22px;
+  color: #FFFFFF;
+  text-align: center;
+  padding-left: 50px;
+  padding-right: 50px;
+  text-overflow: ellipsis;
+}
+
+/* === PHẦN DƯỚI: ETA + Quãng đường còn lại === */
+.bottom-section {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-top: 4px;
+}
+
+.info-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+/* Đường kẻ dọc giữa ETA và remaining */
+.info-divider {
+  width: 2px;
+  height: 36px;
+  background-color: #333333;
+}
+
+/* Nhãn (ETA, Còn lại) */
+.info-label {
+  font-size: 14px;
+  color: #999999;
+  text-align: center;
+  margin-bottom: 2px;
+}
+
+/* Giá trị thông tin */
+.info-value {
+  font-size: 22px;
+  color: #FFFFFF;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* Màu vàng cho ETA */
+.eta-value {
+  color: #FFD700;
+}
+
+/* Màu xanh cho quãng đường còn lại */
+.remaining-value {
+  color: #CCCCCC;
+}
+
+/* === THANH TRẠNG THÁI KẾT NỐI === */
+.connection-bar {
+  position: fixed;
+  bottom: 60px;
+  left: 133px;
+  width: 200px;
+  height: 28px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #FF4444;
+}
+
+/* Ẩn thanh kết nối khi bình thường */
+.connection-bar-hidden {
+  display: none;
+}
+
+/* Hiện thanh kết nối khi mất kết nối */
+.connection-bar-visible {
+  display: flex;
+}
+
+.connection-text {
+  font-size: 14px;
+  color: #FFFFFF;
+  text-align: center;
+}

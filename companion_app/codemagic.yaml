@@ -1,0 +1,39 @@
+workflows:
+  ios-unsigned-ipa:
+    name: Build Unsigned iOS IPA (For Sideloadly)
+    max_build_duration: 30
+    instance_type: mac_mini_m1
+    environment:
+      flutter: stable
+      xcode: latest
+      cocoapods: default
+    scripts:
+      - name: Set up project
+        script: |
+          cd companion_app
+          flutter packages pub get
+      - name: Install CocoaPods
+        script: |
+          cd companion_app/ios
+          pod install
+      - name: Build iOS Release (No Codesign)
+        script: |
+          cd companion_app
+          flutter build ios --release --no-codesign
+      - name: Package Unsigned .ipa for Sideloadly
+        script: |
+          cd companion_app/build/ios/iphoneos
+          mkdir -p Payload
+          cp -r Runner.app Payload/
+          zip -r GT3Nav_unsigned.ipa Payload
+          mv GT3Nav_unsigned.ipa ../../../
+    artifacts:
+      - companion_app/GT3Nav_unsigned.ipa
+      - companion_app/build/ios/iphoneos/*.app
+    publishing:
+      email:
+        recipients:
+          - your_email@example.com
+        notify:
+          success: true
+          failure: true

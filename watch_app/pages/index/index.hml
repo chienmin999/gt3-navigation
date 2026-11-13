@@ -1,0 +1,42 @@
+<!-- 
+  Trang chính hiển thị dẫn đường / Main Navigation Display
+  Hiển thị: mũi tên rẽ, khoảng cách, tên đường, ETA
+  Màn hình tròn 466x466px - GT 3 SE - Dark theme
+-->
+<div class="container">
+  
+  <!-- Phần trên: Icon maneuver + khoảng cách -->
+  <div class="top-section">
+    <!-- Mũi tên chỉ hướng rẽ (dùng text Unicode fallback) -->
+    <text class="maneuver-icon">{{ maneuverIcon }}</text>
+    <!-- Khoảng cách đến chỗ rẽ -->
+    <text class="distance-text">{{ distance }}</text>
+  </div>
+
+  <!-- Đường kẻ phân cách -->
+  <div class="divider"></div>
+
+  <!-- Phần giữa: Tên đường -->
+  <div class="middle-section">
+    <text class="maneuver-label">{{ maneuverLabel }}</text>
+    <text class="street-name">{{ streetName }}</text>
+  </div>
+
+  <!-- Phần dưới: ETA và quãng đường còn lại -->
+  <div class="bottom-section">
+    <div class="info-item">
+      <text class="info-label">ETA</text>
+      <text class="info-value eta-value">{{ eta }}</text>
+    </div>
+    <div class="info-divider"></div>
+    <div class="info-item">
+      <text class="info-label">Còn lại</text>
+      <text class="info-value remaining-value">{{ remainingKm }} km</text>
+    </div>
+  </div>
+
+  <!-- Thanh trạng thái kết nối (hiện khi mất kết nối) -->
+  <div class="connection-bar {{ connectionBarClass }}">
+    <text class="connection-text">{{ connectionText }}</text>
+  </div>
+</div>

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>$(DEVELOPMENT_LANGUAGE)</string>
+	<key>CFBundleDisplayName</key>
+	<string>GT3 Navigation</string>
+	<key>CFBundleExecutable</key>
+	<string>$(EXECUTABLE_NAME)</string>
+	<key>CFBundleIdentifier</key>
+	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundleName</key>
+	<string>gt3_nav_companion</string>
+	<key>CFBundlePackageType</key>
+	<string>APPL</string>
+	<key>CFBundleShortVersionString</key>
+	<string>$(FLUTTER_BUILD_NAME)</string>
+	<key>CFBundleSignature</key>
+	<string>????</string>
+	<key>CFBundleVersion</key>
+	<string>$(FLUTTER_BUILD_NUMBER)</string>
+	<key>LSRequiresIPhoneOS</key>
+	<true/>
+	<key>UILaunchStoryboardName</key>
+	<string>LaunchScreen</string>
+	<key>UIMainStoryboardFile</key>
+	<string>Main</string>
+	<key>UISupportedInterfaceOrientations</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
+	</array>
+
+	<!-- Quyền Vị trí (GPS) -->
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Ứng dụng cần quyền vị trí để hiển thị vị trí trên bản đồ và dẫn đường.</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>Ứng dụng cần vị trí liên tục để gửi hướng rẽ sang đồng hồ khi bạn đi ngoài đường.</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Ứng dụng cần chạy vị trí nền để cập nhật rẽ hướng sang đồng hồ.</string>
+
+	<!-- Quyền Bluetooth kết nối Huawei Watch -->
+	<key>NSBluetoothAlwaysUsageDescription</key>
+	<string>Ứng dụng cần Bluetooth để kết nối và truyền dữ liệu dẫn đường tới đồng hồ Huawei GT3 SE.</string>
+	<key>NSBluetoothPeripheralUsageDescription</key>
+	<string>Ứng dụng kết nối với đồng hồ thông qua Bluetooth.</string>
+
+	<!-- Chạy ngầm: Location + Bluetooth -->
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>location</string>
+		<string>bluetooth-central</string>
+		<string>fetch</string>
+	</array>
+
+	<!-- URL Scheme để Huawei Health redirect sau khi xác thực -->
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>com.gt3nav.app</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>gt3nav</string>
+			</array>
+		</dict>
+	</array>
+
+	<key>UIViewControllerBasedStatusBarAppearance</key>
+	<false/>
+	<key>CADisableMinimumFrameDurationOnPhone</key>
+	<true/>
+	<key>UIApplicationSupportsIndirectInputEvents</key>
+	<true/>
+</dict>
+</plist>

@@ -1,0 +1,33 @@
+{
+  "strings": {
+    "appName": "Navigation",
+    "waiting_title": "Waiting for phone",
+    "waiting_subtitle": "Open navigation app on your phone",
+    "waiting_connecting": "Connecting...",
+    "disconnected_title": "Disconnected",
+    "disconnected_subtitle": "Check phone connection",
+    "nav_distance_label": "In",
+    "nav_eta_label": "ETA",
+    "nav_remaining_label": "Remaining",
+    "nav_street_default": "Unknown road",
+    "compass_title": "Compass",
+    "compass_north": "N",
+    "compass_south": "S",
+    "compass_east": "E",
+    "compass_west": "W",
+    "maneuver_straight": "Continue straight",
+    "maneuver_turn_left": "Turn left",
+    "maneuver_turn_right": "Turn right",
+    "maneuver_slight_left": "Slight left",
+    "maneuver_slight_right": "Slight right",
+    "maneuver_sharp_left": "Sharp left",
+    "maneuver_sharp_right": "Sharp right",
+    "maneuver_u_turn": "U-turn",
+    "maneuver_roundabout": "Roundabout",
+    "maneuver_arrive": "You have arrived",
+    "maneuver_depart": "Depart",
+    "km_unit": "km",
+    "connection_lost": "Connection lost",
+    "reconnecting": "Reconnecting..."
+  }
+}

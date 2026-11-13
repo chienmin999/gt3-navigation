@@ -1,0 +1,119 @@
+/**
+ * Styles cho trang La bàn / Compass Page
+ * Dark theme, high contrast, màn hình tròn 466x466px
+ */
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 466px;
+  height: 466px;
+  background-color: #000000;
+  border-radius: 233px;
+}
+
+/* Tiêu đề */
+.title {
+  font-size: 22px;
+  color: #CCCCCC;
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+/* === VÒNG LA BÀN === */
+.compass-ring {
+  width: 300px;
+  height: 300px;
+  border-radius: 150px;
+  border: 3px solid #444444;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+/* Chữ hướng Bắc/Nam/Đông/Tây */
+.direction {
+  position: absolute;
+  font-size: 24px;
+  font-weight: bold;
+  color: #CCCCCC;
+}
+
+/* Bắc - màu đỏ nổi bật */
+.direction-n {
+  top: 10px;
+  left: 138px;
+  color: #FF4444;
+}
+
+/* Đông */
+.direction-e {
+  top: 138px;
+  right: 10px;
+}
+
+/* Nam */
+.direction-s {
+  bottom: 10px;
+  left: 138px;
+}
+
+/* Tây */
+.direction-w {
+  top: 138px;
+  left: 12px;
+}
+
+/* Container cho kim la bàn - xoay theo heading */
+.needle-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  width: 40px;
+  height: 200px;
+}
+
+/* Kim hướng Bắc - đỏ */
+.needle-north {
+  font-size: 44px;
+  color: #FF4444;
+  text-align: center;
+}
+
+/* Kim hướng Nam - trắng */
+.needle-south {
+  font-size: 44px;
+  color: #FFFFFF;
+  text-align: center;
+}
+
+/* Số độ heading ở giữa */
+.heading-text {
+  font-size: 40px;
+  color: #FFFFFF;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* Nhãn hướng dưới số độ */
+.heading-label {
+  font-size: 18px;
+  color: #00FF88;
+  text-align: center;
+  margin-top: 4px;
+}
+
+/* Ghi chú phía dưới */
+.note {
+  font-size: 14px;
+  color: #666666;
+  text-align: center;
+  margin-top: 12px;
+  padding-left: 60px;
+  padding-right: 60px;
+}

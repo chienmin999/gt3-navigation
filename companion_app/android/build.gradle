@@ -1,0 +1,20 @@
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+        // Huawei Maven repo cho Wear Engine SDK
+        maven { url 'https://developer.huawei.com/repo/' }
+    }
+}
+
+rootProject.buildDir = '../build'
+subprojects {
+    project.buildDir = "${rootProject.buildDir}/${project.name}"
+}
+subprojects {
+    project.evaluationDependsOn(':app')
+}
+
+tasks.register("clean", Delete) {
+    delete rootProject.buildDir
+}

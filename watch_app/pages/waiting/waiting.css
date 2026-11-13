@@ -1,0 +1,89 @@
+/**
+ * Styles cho trang Waiting / Connecting
+ * Dark theme, màn hình tròn 466x466px
+ */
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 466px;
+  height: 466px;
+  background-color: #000000;
+  border-radius: 233px;
+}
+
+/* Vòng loading animation */
+.loading-ring {
+  width: 120px;
+  height: 120px;
+  border-radius: 60px;
+  border: 4px solid #333333;
+  border-top-color: #00FF88;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+
+.loading-icon {
+  font-size: 40px;
+  color: #00FF88;
+}
+
+/* Tiêu đề chính */
+.title {
+  font-size: 28px;
+  color: #FFFFFF;
+  text-align: center;
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+/* Phụ đề / mô tả */
+.subtitle {
+  font-size: 18px;
+  color: #CCCCCC;
+  text-align: center;
+  margin-bottom: 20px;
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
+/* Container cho dấu chấm animation */
+.dots-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  height: 20px;
+  margin-bottom: 16px;
+}
+
+/* Dấu chấm nhấp nháy */
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 5px;
+  background-color: #555555;
+  margin-left: 6px;
+  margin-right: 6px;
+}
+
+/* Trạng thái active cho dots animation */
+.dot-active {
+  background-color: #00FF88;
+}
+
+/* Nút thử lại */
+.retry-button {
+  width: 160px;
+  height: 44px;
+  border-radius: 22px;
+  background-color: #00FF88;
+  color: #000000;
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 8px;
+}

@@ -1,0 +1,49 @@
+name: gt3_nav_companion
+description: >
+  Ứng dụng dẫn đường kết nối với Huawei Watch GT 3 SE.
+  Hiển thị bản đồ, tìm đường, gửi hướng dẫn rẽ sang đồng hồ.
+
+publish_to: "none"
+version: 1.0.0+1
+
+environment:
+  sdk: ">=3.1.0 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # Bản đồ & vị trí
+  flutter_map: ^6.1.0
+  latlong2: ^0.9.0
+  geolocator: ^11.0.0
+  flutter_compass: ^0.8.0
+
+  # Quyền truy cập
+  permission_handler: ^11.1.0
+
+  # Giao tiếp mạng
+  http: ^1.2.0
+
+  # State management
+  provider: ^6.1.1
+
+  # Thông báo
+  flutter_local_notifications: ^17.0.0
+
+  # Giữ màn hình sáng khi dẫn đường
+  wakelock_plus: ^1.1.4
+
+  # UI helpers
+  cupertino_icons: ^1.0.6
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.1
+
+flutter:
+  uses-material-design: true
+
+  assets: []
+  # Thêm assets ở đây nếu cần (icons, images, v.v.)

@@ -1,0 +1,31 @@
+<!-- 
+  Trang chờ kết nối / Waiting & Connecting Screen
+  Hiển thị khi chưa nhận được dữ liệu từ điện thoại
+  Màn hình tròn 466x466px - GT 3 SE
+-->
+<div class="container">
+  <!-- Vòng tròn animation loading -->
+  <div class="loading-ring">
+    <text class="loading-icon">⌚</text>
+  </div>
+
+  <!-- Tiêu đề trạng thái -->
+  <text class="title">{{ statusTitle }}</text>
+  
+  <!-- Mô tả hướng dẫn -->
+  <text class="subtitle">{{ statusSubtitle }}</text>
+
+  <!-- Dấu chấm animation -->
+  <div class="dots-container">
+    <div class="dot {{ dot1Class }}"></div>
+    <div class="dot {{ dot2Class }}"></div>
+    <div class="dot {{ dot3Class }}"></div>
+  </div>
+
+  <!-- Nút thử lại (hiển thị khi mất kết nối) -->
+  <input if="{{ showRetry }}" 
+         type="button" 
+         value="Thử lại" 
+         class="retry-button"
+         onclick="onRetryClick" />
+</div>

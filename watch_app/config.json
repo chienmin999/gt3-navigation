@@ -1,0 +1,71 @@
+{
+  "app": {
+    "bundleName": "com.navgt3se.watchapp",
+    "vendor": "NavGT3SE",
+    "version": {
+      "code": 1,
+      "name": "1.0.0"
+    },
+    "apiVersion": {
+      "compatible": 6,
+      "target": 6,
+      "releaseType": "Release"
+    }
+  },
+  "deviceConfig": {
+    "default": {
+      "network": {
+        "cleartextTraffic": true
+      }
+    }
+  },
+  "module": {
+    "package": "com.navgt3se.watchapp",
+    "name": ".MainAbility",
+    "deviceType": [
+      "liteWearable"
+    ],
+    "distro": {
+      "deliveryWithInstall": true,
+      "moduleName": "entry",
+      "moduleType": "entry"
+    },
+    "pages": [
+      "pages/index/index",
+      "pages/waiting/waiting",
+      "pages/compass/compass"
+    ],
+    "reqPermissions": [
+      {
+        "name": "ohos.permission.VIBRATE",
+        "reason": "Rung cảnh báo khi sắp tới chỗ rẽ"
+      },
+      {
+        "name": "ohos.permission.GET_NETWORK_INFO",
+        "reason": "Kiểm tra trạng thái kết nối mạng"
+      },
+      {
+        "name": "ohos.permission.INTERNET",
+        "reason": "Nhận dữ liệu P2P từ điện thoại"
+      },
+      {
+        "name": "ohos.permission.USE_BLUETOOTH",
+        "reason": "Kết nối Bluetooth với điện thoại"
+      }
+    ],
+    "js": [
+      {
+        "pages": [
+          "pages/index/index",
+          "pages/waiting/waiting",
+          "pages/compass/compass"
+        ],
+        "name": "default",
+        "window": {
+          "designWidth": 466,
+          "autoDesignWidth": false
+        }
+      }
+    ]
+  }
+}
