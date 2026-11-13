@@ -11,38 +11,34 @@ workflows:
     scripts:
       - name: Generate and configure iOS project
         script: |
-          # 1. Sao lưu cấu hình riêng của app
+          # 1. Sao lưu cấu hình riêng của app (Info.plist, AppDelegate)
           cp ios/Runner/Info.plist /tmp/Info.plist
           cp ios/Runner/AppDelegate.swift /tmp/AppDelegate.swift
 
-          # 2. Tạo đầy đủ Xcode project scaffolding cho iOS
+          # 2. Tạo Xcode project scaffolding nguyên bản
           flutter create . --platforms=ios --org com.gt3nav
 
           # 3. Phục hồi cấu hình quyền & bridge
           cp /tmp/Info.plist ios/Runner/Info.plist
           cp /tmp/AppDelegate.swift ios/Runner/AppDelegate.swift
 
-          # 4. Lấy Flutter dependencies
+          # 4. Cấu hình unsigned build an toàn qua .xcconfig (Chuẩn Apple/Flutter, không can thiệp pbxproj)
+          echo "DEVELOPMENT_TEAM = ABC123XYZ8" >> ios/Flutter/Release.xcconfig
+          echo "CODE_SIGN_IDENTITY =" >> ios/Flutter/Release.xcconfig
+          echo "CODE_SIGNING_REQUIRED = NO" >> ios/Flutter/Release.xcconfig
+          echo "CODE_SIGNING_ALLOWED = NO" >> ios/Flutter/Release.xcconfig
+
+          echo "DEVELOPMENT_TEAM = ABC123XYZ8" >> ios/Flutter/Debug.xcconfig
+          echo "CODE_SIGN_IDENTITY =" >> ios/Flutter/Debug.xcconfig
+          echo "CODE_SIGNING_REQUIRED = NO" >> ios/Flutter/Debug.xcconfig
+          echo "CODE_SIGNING_ALLOWED = NO" >> ios/Flutter/Debug.xcconfig
+
+          # 5. Tải Flutter packages
           flutter packages pub get
       - name: Build iOS Release (No Codesign)
         script: |
-          # Bơm DEVELOPMENT_TEAM và tắt code signing trong project.pbxproj để vượt qua kiểm tra của Flutter
-          python3 -c '
-          import re
-          with open("ios/Runner.xcodeproj/project.pbxproj", "r") as f:
-              text = f.read()
-          text = re.sub(
-              r"(PRODUCT_BUNDLE_IDENTIFIER = [^;]+;)",
-              r"\1\n\t\t\t\tDEVELOPMENT_TEAM = A1B2C3D4E5;\n\t\t\t\tCODE_SIGN_IDENTITY = \"\";\n\t\t\t\tCODE_SIGNING_REQUIRED = NO;\n\t\t\t\tCODE_SIGNING_ALLOWED = NO;",
-              text
-          )
-          with open("ios/Runner.xcodeproj/project.pbxproj", "w") as f:
-              f.write(text)
-          '
-
-          # Biên dịch release không cần code signing
           flutter build ios --release --no-codesign || {
-            echo "Flutter CLI blocked on signing check. Falling back to direct xcodebuild..."
+            echo "Fallback to direct xcodebuild..."
             xcodebuild -workspace ios/Runner.xcworkspace \
               -scheme Runner \
               -configuration Release \
