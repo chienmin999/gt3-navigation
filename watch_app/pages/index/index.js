@@ -32,7 +32,7 @@ export default {
     remainingKm: '--',
 
     // === Trạng thái kết nối ===
-    connectionBarClass: 'connection-bar-hidden',
+    isConnectionLost: false,
     connectionText: '',
 
     // === Biến nội bộ ===
@@ -242,7 +242,7 @@ export default {
    * @param {string} text - Nội dung hiển thị
    */
   showConnectionBar(text) {
-    this.connectionBarClass = 'connection-bar-visible';
+    this.isConnectionLost = true;
     this.connectionText = text;
   },
 
@@ -250,7 +250,7 @@ export default {
    * Ẩn thanh trạng thái kết nối
    */
   hideConnectionBar() {
-    this.connectionBarClass = 'connection-bar-hidden';
+    this.isConnectionLost = false;
     this.connectionText = '';
   },
 

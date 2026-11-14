@@ -36,7 +36,7 @@
   </div>
 
   <!-- Thanh trạng thái kết nối (hiện khi mất kết nối) -->
-  <div class="connection-bar {{ connectionBarClass }}">
+  <div class="connection-bar" if="{{ isConnectionLost }}">
     <text class="connection-text">{{ connectionText }}</text>
   </div>
 </div>

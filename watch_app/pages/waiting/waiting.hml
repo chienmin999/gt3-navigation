@@ -17,9 +17,12 @@
 
   <!-- Dấu chấm animation -->
   <div class="dots-container">
-    <div class="dot {{ dot1Class }}"></div>
-    <div class="dot {{ dot2Class }}"></div>
-    <div class="dot {{ dot3Class }}"></div>
+    <div if="{{ isDot1Active }}" class="dot dot-active"></div>
+    <div if="{{ !isDot1Active }}" class="dot"></div>
+    <div if="{{ isDot2Active }}" class="dot dot-active"></div>
+    <div if="{{ !isDot2Active }}" class="dot"></div>
+    <div if="{{ isDot3Active }}" class="dot dot-active"></div>
+    <div if="{{ !isDot3Active }}" class="dot"></div>
   </div>
 
   <!-- Nút thử lại (hiển thị khi mất kết nối) -->

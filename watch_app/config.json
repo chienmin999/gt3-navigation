@@ -13,15 +13,9 @@
     }
   },
   "deviceConfig": {
-    "default": {
-      "network": {
-        "cleartextTraffic": true
-      }
-    }
+    "default": {}
   },
   "module": {
-    "package": "com.navgt3se.watchapp",
-    "name": ".MainAbility",
     "deviceType": [
       "liteWearable"
     ],
@@ -30,41 +24,47 @@
       "moduleName": "entry",
       "moduleType": "entry"
     },
-    "pages": [
-      "pages/index/index",
-      "pages/waiting/waiting",
-      "pages/compass/compass"
-    ],
-    "reqPermissions": [
+    "abilities": [
       {
-        "name": "ohos.permission.VIBRATE",
-        "reason": "Rung cảnh báo khi sắp tới chỗ rẽ"
-      },
-      {
-        "name": "ohos.permission.GET_NETWORK_INFO",
-        "reason": "Kiểm tra trạng thái kết nối mạng"
-      },
-      {
-        "name": "ohos.permission.INTERNET",
-        "reason": "Nhận dữ liệu P2P từ điện thoại"
-      },
-      {
-        "name": "ohos.permission.USE_BLUETOOTH",
-        "reason": "Kết nối Bluetooth với điện thoại"
+        "name": ".MainAbility",
+        "srcLanguage": "js",
+        "srcPath": "default",
+        "icon": "$media:icon",
+        "description": "$string:MainAbility_desc",
+        "label": "$string:MainAbility_label",
+        "type": "page"
       }
     ],
     "js": [
       {
+        "name": "default",
         "pages": [
           "pages/index/index",
           "pages/waiting/waiting",
           "pages/compass/compass"
         ],
-        "name": "default",
         "window": {
           "designWidth": 466,
           "autoDesignWidth": false
         }
+      }
+    ],
+    "reqPermissions": [
+      {
+        "name": "ohos.permission.VIBRATE",
+        "reason": "Vibrate on turn"
+      },
+      {
+        "name": "ohos.permission.GET_NETWORK_INFO",
+        "reason": "Check connection"
+      },
+      {
+        "name": "ohos.permission.INTERNET",
+        "reason": "Receive P2P data"
+      },
+      {
+        "name": "ohos.permission.USE_BLUETOOTH",
+        "reason": "Bluetooth communication"
       }
     ]
   }

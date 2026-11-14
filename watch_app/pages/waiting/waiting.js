@@ -73,22 +73,9 @@ export default {
 
     this._dotTimer = setInterval(() => {
       this._currentDot = (this._currentDot + 1) % 3;
-      // Reset tất cả dots
-      this.dot1Class = '';
-      this.dot2Class = '';
-      this.dot3Class = '';
-      // Bật dot hiện tại
-      switch (this._currentDot) {
-        case 0:
-          this.dot1Class = 'dot-active';
-          break;
-        case 1:
-          this.dot2Class = 'dot-active';
-          break;
-        case 2:
-          this.dot3Class = 'dot-active';
-          break;
-      }
+      this.isDot1Active = (this._currentDot === 0);
+      this.isDot2Active = (this._currentDot === 1);
+      this.isDot3Active = (this._currentDot === 2);
     }, DOT_INTERVAL);
   },
 
